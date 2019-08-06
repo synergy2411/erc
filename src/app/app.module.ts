@@ -10,6 +10,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { NationalCodePipe } from './pipes/national-code.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RegisterComponent } from './register/register.component';
     HighlightDirective,
     UnlessDirective,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NationalCodePipe
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule

@@ -1,8 +1,8 @@
 <!-- <ng-content select ="header"></ng-content> -->
 
-<h1 appHighlight [myColor] = "'yellow'">{{ user.firstName }} {{ user.lastName }}</h1>
+<h1 appHighlight [myColor] = "'yellow'">{{ user.firstName | uppercase }} {{ user.lastName | uppercase}}</h1>
 
-<p *ngIf="user.isWorking; else elseTemplate">Income : <span [innerHTML]="user.income"></span></p>
+<p *ngIf="user.isWorking; else elseTemplate">Income : <span [innerHTML]="user.income | currency : 'INR'"></span></p>
 
 <!-- <ng-template [ngIf]="!user.isWorking">
   <p>Income from template : {{user.income}}</p>
@@ -21,7 +21,7 @@
 </ng-template>
 
 
-<p [ngClass]= "dynamicClass">Date of Birth : {{ user.dob }}
+<p [ngClass]= "dynamicClass">Date of Birth : {{ user.dob | date : 'MMM/dd/yyyy'}}
 
   <button class="btn btn-default btn-sm" (click)= "onToggle()">Toggle Class</button>
 </p>
@@ -32,5 +32,7 @@
   <input type="number" [value]="user.votes" (change)="user.votes=$event.target.value">
   <input type="number" [(ngModel)]="user.votes">
 </p>
+
+<p>Contact Number : {{ contact_num | nationalCode }}</p>
 
 <!-- <ng-content select ="footer"></ng-content> -->

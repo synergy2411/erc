@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 
 export class UserInfoComponent{
   @Input() user : any;
+  contact_num  = 987654321;
   dynamicClass = {'feature' : false, 'border' : true}
   dynamicStyle = {
     'text-transform' : 'uppercase'

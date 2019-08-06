@@ -18,21 +18,22 @@ export class RegisterComponent implements OnInit {
     this.exclamationMark
   ]);
 
-  registerForm : FormGroup;
+  registerForm: FormGroup;
 
-  constructor(private fb : FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
-      username : this.username,
-      password : this.password
+      username: this.username,
+      password: this.password
     })
   }
 
-  exclamationMark(input : FormControl){
-    const hasExclamation = input.value.indexOf('!') >=0;
-    return hasExclamation ? null : { "hasExcl" : true}
+  exclamationMark(input: FormControl) {
+    console.log(input);
+    const hasExclamation = input.value.indexOf('!') >= 0;
+    return hasExclamation ? null : { "hasExcl": true }
   }
 
-  onRegister(){
+  onRegister() {
     console.log(this.registerForm);
   }
 
