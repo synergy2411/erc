@@ -1,0 +1,29 @@
+<form class="well" [formGroup]="registerForm">
+  <input type="text" name="username"
+    class="form-control"
+    [formControl]="username">
+
+    <div [hidden]="username.valid || username.untouched">
+      <p>Something wrong with username</p>
+      <div [hidden] = "!username.hasError('required')">
+        <p>Username is mandatory field.</p>
+      </div>
+      <div [hidden] = "!username.hasError('email')">
+        <p>Username should be in email format.</p>
+      </div>
+    </div>
+
+  <input type="password" name="password"
+    class="form-control"
+    [formControl]="password">
+
+    <div [hidden]="password.valid || password.untouched">
+      <div [hidden]="!password.hasError('hasExcl')">
+        <p>Password must conatin exclamation mark!</p>
+      </div>
+
+    </div>
+
+  <button class="btn btn-block btn-default"
+    (click)="onRegister()">Register</button>
+</form>

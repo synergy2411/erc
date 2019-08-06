@@ -1,0 +1,37 @@
+<form class="well" #f="ngForm">
+  <h2>Login Form</h2>
+  <div class="row">
+    <div class="form-group">
+      <label for="username">Username :</label>
+      <input type="email" name="username" class="form-control"  required minlength="6" email>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password :</label>
+      <input type="password" name="password" class="form-control" required ngModel>
+    </div>
+
+    <button class="btn btn-primary btn-block" [disabled]="!f.valid" (click)="onLogin(f)">
+      Login
+    </button>
+    <!--
+    Form State : {{ f.valid }} -->
+
+  </div>
+
+  <!-- <div *ngIf="f.controls" class="container"> -->
+  <div *ngIf="f.controls?.username">
+    <div *ngIf="f.controls.username.status !== 'VALID' && f.controls.username.dirty">
+      <p class="alert alert-danger">Something wrong with Username.</p>
+    </div>
+  </div>
+  <!-- Status : {{ f.controls.username.dirty && f.controls.username.invalid ? true : false}} -->
+  <div *ngIf=" f.controls?.password">
+    <div *ngIf="f.controls.password.status !== 'VALID' && f.controls.password.dirty">
+      <p class="alert alert-danger">Something wrong with Password.</p>
+    </div>
+  </div>
+  <!-- </div> -->
+
+
+</form>
