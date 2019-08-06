@@ -1,0 +1,4 @@
+<img [src]="user.image" alt="">
+<button class="btn btn-block btn-info"
+  (click)="onInfo(user)">More Info</button>
+  <input type="text" #childCtrl (keyup)="onChildEvent(childCtrl.value)">

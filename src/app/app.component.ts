@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'users-app';
+  todo = {
+    label : "Pot the plant",
+    status : true
+  }
 }

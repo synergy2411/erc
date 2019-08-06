@@ -1,0 +1,36 @@
+<!-- <ng-content select ="header"></ng-content> -->
+
+<h1 appHighlight [myColor] = "'yellow'">{{ user.firstName }} {{ user.lastName }}</h1>
+
+<p *ngIf="user.isWorking; else elseTemplate">Income : <span [innerHTML]="user.income"></span></p>
+
+<!-- <ng-template [ngIf]="!user.isWorking">
+  <p>Income from template : {{user.income}}</p>
+</ng-template> -->
+
+<p *appUnless = "user.isWorking">Income (appUnless) : {{ user.income }}</p>
+
+<!-- <ng-template [appUnless] ="user.isWorking">
+  <p>Income (appUnless) : {{ user.income }}</p>
+</ng-template> -->
+
+
+
+<ng-template #elseTemplate>
+  <p [ngStyle]="{'text-transform' : 'uppercase'}">Mr. {{ user.lastName }} is not working now!</p>
+</ng-template>
+
+
+<p [ngClass]= "dynamicClass">Date of Birth : {{ user.dob }}
+
+  <button class="btn btn-default btn-sm" (click)= "onToggle()">Toggle Class</button>
+</p>
+
+
+
+<p>Total Votes : {{ user.votes }}
+  <input type="number" [value]="user.votes" (change)="user.votes=$event.target.value">
+  <input type="number" [(ngModel)]="user.votes">
+</p>
+
+<!-- <ng-content select ="footer"></ng-content> -->

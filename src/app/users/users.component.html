@@ -1,0 +1,42 @@
+<div class="container">
+
+
+  Title : <input type="text" [(ngModel)]="todo.label">
+  <br>
+
+  <ul class="list-unstyled">
+
+    <li class="well" *ngFor="let user of users;index as i">
+      <!-- <ng-container [ngIf]="i==1"> -->
+        <div class="row">
+
+          <div class="col-sm-2 col-md-2">
+            <app-user-image [user]="user" (childEvent)="onMoreInfo($event)" (childCtrlEvent)="childValue = $event">
+            </app-user-image>
+          </div>
+          <div class="col-sm-8 col-md-8">
+            <app-user-info [user]="user">
+              <header>Header Info</header>
+              <section>Main Section</section>
+              <footer>Footer Info</footer>
+            </app-user-info>
+          </div>
+        </div>
+      <!-- </ng-container> -->
+    </li>
+
+  </ul>
+
+  Child Value : {{ childValue }}
+
+</div>
+
+
+<!-- <div [ngSwitch] = "expr">
+  <div *ngSwitchCase = "case1">Output</div>
+  <div *ngSwitchCase = "case2">Output</div>
+  <div *ngSwitchCase = "case3">Output</div>
+  <div *ngSwitchCase = "case4">Output</div>
+  <div *ngSwitchDefault >Output</div>
+
+</div> -->
