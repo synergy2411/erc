@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -16,6 +16,8 @@ import { PipeDemoComponent } from './pipe-demo/pipe-demo.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './services/auth-interceptor';
+import { LoggerInterceptor } from './services/logger.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,15 @@ import { AuthService } from './services/auth.service';
     BrowserModule, FormsModule, ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [DataService, AuthService],
+  providers: [DataService, AuthService, {
+    provide : HTTP_INTERCEPTORS,
+    useClass : AuthInterceptor,
+    multi : true
+  },{
+    provide : HTTP_INTERCEPTORS,
+    useClass : LoggerInterceptor,
+    multi : true
+  }],
   bootstrap: [AppComponent],
   // entryComponents : [],
   // exports : []
