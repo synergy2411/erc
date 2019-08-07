@@ -2,27 +2,30 @@
 
   <!-- {{users | json }} -->
 
-  Title : <input type="text" [(ngModel)]="todo.label">
+  <!-- Title : <input type="text" [(ngModel)]="todo.label"> -->
+
+  Counter in Users : {{ dataService.counter }}
+
   <br>
 
   <ul class="list-unstyled">
 
     <li class="well" *ngFor="let user of users;index as i">
       <!-- <ng-container [ngIf]="i==1"> -->
-        <div class="row">
+      <div class="row">
 
-          <div class="col-sm-2 col-md-2">
-            <app-user-image [user]="user" (childEvent)="onMoreInfo($event)" (childCtrlEvent)="childValue = $event">
-            </app-user-image>
-          </div>
-          <div class="col-sm-8 col-md-8">
-            <app-user-info [user]="user">
-              <header>Header Info</header>
-              <section>Main Section</section>
-              <footer>Footer Info</footer>
-            </app-user-info>
-          </div>
+        <div class="col-sm-2 col-md-2 col-xs-2">
+          <app-user-image [user]="user" (childEvent)="onMoreInfo($event)" (childCtrlEvent)="childValue = $event">
+          </app-user-image>
         </div>
+        <div class="col-sm-8 col-md-8 col-xs-8">
+          <app-user-info [user]="user">
+            <header>Header Info</header>
+            <section>Main Section</section>
+            <footer>Footer Info</footer>
+          </app-user-info>
+        </div>
+      </div>
       <!-- </ng-container> -->
     </li>
 

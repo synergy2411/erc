@@ -6,7 +6,14 @@
 </h1>
 
 
-Title : <input type="text" [(ngModel)]="title">
+<!-- Title : <input type="text" [(ngModel)]="title"> -->
+
+<h2>Counter in App : {{ dataService.counter }} </h2>
+<button type="button" (click)="onIncrease()"
+  class="btn btn-default">Increase</button>
+
+
+
 <br>
 <br>
 <hr>

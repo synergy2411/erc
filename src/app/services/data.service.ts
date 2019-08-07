@@ -4,11 +4,12 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
+  counter: number = 0;
   constructor(private httpClient: HttpClient) { }
   getData() {
     return USER_DATA;
   }
   getJSONData() {
-    return this.httpClient.get("assets/model/user-data.json");
+    return this.httpClient.get("https://ersc-e8e9f.firebaseio.com/userdata.json");
   }
 }

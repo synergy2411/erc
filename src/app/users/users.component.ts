@@ -5,7 +5,8 @@ import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
+  providers: [DataService]
 })
 export class UsersComponent implements OnInit, OnChanges, AfterContentInit,
   AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, DoCheck {
@@ -19,23 +20,40 @@ export class UsersComponent implements OnInit, OnChanges, AfterContentInit,
   }
 
   childValue: any;
-  constructor(private dataService : DataService) { console.log("Constructor") }
+  constructor(public dataService: DataService) {
+    // console.log("Constructor")
+  }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("ngOnChanges", changes);
+    // console.log("ngOnChanges", changes);
   }
   ngOnInit() {
-    console.log("ngOnInit");
+    // console.log("ngOnInit");
     this.dataService.getJSONData()
-    .subscribe(response => this.users = response['userdata']);
+      .subscribe(response => this.users = <IUser[]>response);
   }
 
-  ngDoCheck() { console.log("ngDoCheck") }
-  ngAfterContentInit() { console.log("ngAfterContentInit") }
-  ngAfterContentChecked() { console.log("ngAfterContentChecked") }
-  ngAfterViewInit() { console.log("ngAfterViewInit") }
-  ngAfterViewChecked() { console.log("ngAfterViewChecked") }
-  ngOnDestroy() { console.log("ngOnDestroy") }
+  ngDoCheck() {
+    // console.log("ngDoCheck")
+  }
+  ngAfterContentInit() {
+    // console.log("ngAfterContentInit")
+  }
+  ngAfterContentChecked() {
+    //  console.log("ngAfterContentChecked")
+  }
+  ngAfterViewInit() {
+    // console.log("ngAfterViewInit")
+  }
+  ngAfterViewChecked() {
+    // console.log("ngAfterViewChecked")
+  }
+  ngOnDestroy() {
+    // console.log("ngOnDestroy")
+  }
 
 
 }
+
+
+// npm i firebase --save
