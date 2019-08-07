@@ -1,10 +1,6 @@
-import {
-  Component, OnInit, OnChanges, AfterContentInit,
-  AfterContentChecked, AfterViewInit, AfterViewChecked,
-  OnDestroy, DoCheck, Input, SimpleChanges, ChangeDetectionStrategy
-} from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { IUser } from '../model/user.interface';
-import { USER_DATA } from '../model/mocks';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-users',
@@ -23,14 +19,15 @@ export class UsersComponent implements OnInit, OnChanges, AfterContentInit,
   }
 
   childValue: any;
-  constructor() { console.log("Constructor") }
+  constructor(private dataService : DataService) { console.log("Constructor") }
 
   ngOnChanges(changes: SimpleChanges) {
     console.log("ngOnChanges", changes);
   }
   ngOnInit() {
     console.log("ngOnInit");
-    this.users = USER_DATA;
+    this.dataService.getJSONData()
+    .subscribe(response => this.users = response['userdata']);
   }
 
   ngDoCheck() { console.log("ngDoCheck") }
