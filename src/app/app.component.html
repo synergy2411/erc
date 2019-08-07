@@ -1,17 +1,28 @@
-<h1>
-  Welcome to {{ title }}!
-</h1>
-
-<!-- <h2>Counter in App : {{ dataService.counter }} </h2>
-<button type="button" (click)="onIncrease()" class="btn btn-default">Increase</button> -->
+<app-header></app-header>
 
 <br>
 <hr>
 <div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<h1>
+  Welcome to {{ title }}!
+</h1>
+
+<app-new-employee></app-new-employee>
+
+<!-- <h2>Counter in App : {{ dataService.counter }} </h2>
+<button type="button" (click)="onIncrease()" class="btn btn-default">Increase</button> -->
+
+
+
+
+<!-- <div class="container">
   <app-login></app-login>
   <app-register></app-register>
-  <!-- <app-pipe-demo></app-pipe-demo> -->
+   <app-pipe-demo></app-pipe-demo>
 </div>
 <div class="container" *ngIf="authService.isAuthenticated()">
   <app-users [title]="title" [todo]="todo"></app-users>
-</div>
+</div> -->

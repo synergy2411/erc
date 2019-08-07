@@ -1,0 +1,44 @@
+<div class="container">
+  <button class="btn btn-default" (click)="showTodoForm = true">Add New Item </button>
+  <table class="table table-hover" *ngIf="todos.length>0">
+    <thead>
+      <tr>
+        <td><strong>Label</strong></td>
+        <td><strong>Status</strong> 
+          <select [(ngModel)] = "filteredStatus">
+            <option value="all">All Tasks</option>
+            <option value="done">Done</option>
+            <option value="pending">Pending</option>
+          </select>
+        </td>
+        <td><strong>Delete</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container >
+        <tr class="tdata"
+          [ngClass]="{warning : todo.status == 'pending', success : todo.status == 'done'}"
+          *ngFor="let todo of todos | filter : filteredStatus : 'status' ; index as i;">
+          <td>
+            <a (click)="onSelectTodo(todo, i)">
+              {{todo.label | titlecase}}
+            </a>
+          </td>
+          <td>{{todo.status | uppercase}}</td>
+          <td><a (click)="onDelete(i)">Delete</a></td>
+        </tr>
+      </ng-container>
+
+    </tbody>
+  </table>
+
+  <br><br>
+  <div *ngIf="showTodoForm">
+    <app-add-new-todo></app-add-new-todo>
+  </div>
+
+  <div *ngIf="editTodo">
+    <app-edit-todo [selectedTodo] = "selectedTodo" [index] = "selectedTodoIndex"></app-edit-todo>
+  </div>
+
+</div>
