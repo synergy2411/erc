@@ -1,26 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <h1>
-  Welcome to {{ title }}! <br>
-  Todo Label : {{ todo.label }}
+  Welcome to {{ title }}!
 </h1>
 
+<!-- <h2>Counter in App : {{ dataService.counter }} </h2>
+<button type="button" (click)="onIncrease()" class="btn btn-default">Increase</button> -->
 
-<!-- Title : <input type="text" [(ngModel)]="title"> -->
-
-<h2>Counter in App : {{ dataService.counter }} </h2>
-<button type="button" (click)="onIncrease()"
-  class="btn btn-default">Increase</button>
-
-
-
-<br>
 <br>
 <hr>
 <div class="container">
   <!-- <app-login></app-login> -->
-  <!-- <app-register></app-register> -->
+  <app-register></app-register>
   <!-- <app-pipe-demo></app-pipe-demo> -->
 </div>
 
-<app-users [title]="title" [todo] = "todo"></app-users>
+<app-users [title]="title" [todo]="todo"></app-users>
