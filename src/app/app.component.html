@@ -8,9 +8,10 @@
 <br>
 <hr>
 <div class="container">
-  <!-- <app-login></app-login> -->
+  <app-login></app-login>
   <app-register></app-register>
   <!-- <app-pipe-demo></app-pipe-demo> -->
 </div>
-
-<app-users [title]="title" [todo]="todo"></app-users>
+<div class="container" *ngIf="authService.isAuthenticated()">
+  <app-users [title]="title" [todo]="todo"></app-users>
+</div>

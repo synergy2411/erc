@@ -5,8 +5,7 @@ import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
-  providers: [DataService]
+  styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit, OnChanges, AfterContentInit,
   AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy, DoCheck {
@@ -28,9 +27,10 @@ export class UsersComponent implements OnInit, OnChanges, AfterContentInit,
     // console.log("ngOnChanges", changes);
   }
   ngOnInit() {
-    // console.log("ngOnInit");
     this.dataService.getJSONData()
-      .subscribe(response => this.users = <IUser[]>response);
+      .subscribe(response => {
+        this.users = <IUser[]>response;
+      });
   }
 
   ngDoCheck() {
